@@ -1,7 +1,7 @@
 {
-    "name": "evanshunt/carbon-field-rich-text-no-media",
-    "description": "Carbon Fields extension, that adds a YOURFIELDNAME field type.",
-    "keywords": ["wordpress", "carbon-field", "carbon-field-YOURFIELDNAME"],
+    "name": "evanshunt/carbon-fields-rich-text-no-media",
+    "description": "Carbon Fields extension, that adds a Rich Text field type with no media.",
+    "keywords": ["wordpress", "carbon-field", "carbon-fields-rich-text-no-media"],
     "homepage": "",
     "type": "library",
     "license": "GPL-2.0+",
