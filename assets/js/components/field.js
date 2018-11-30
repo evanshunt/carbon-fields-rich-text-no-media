@@ -4,11 +4,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose, withHandlers, setStatic } from 'recompose';
+import { isString } from 'lodash';
 
 /**
  * The internal dependencies.
  */
 import Field from 'fields/components/field';
+import RichTextEditorNoMedia from './editor';
 import withStore from 'fields/decorators/with-store';
 import withSetup from 'fields/decorators/with-setup';
 
@@ -21,23 +23,29 @@ import withSetup from 'fields/decorators/with-setup';
  * @param  {Function}      props.handleChange
  * @return {React.Element}
  */
-export const YOURFIELDNAMEField = ({
+export const RichTextNoMediaField = ({
 	name,
 	field,
 	handleChange
 }) => {
 	return <Field field={field}>
-		<input
-			type="number"
+		<RichTextEditorNoMedia
 			id={field.id}
-			name={name}
-			value={field.value}
-			disabled={!field.ui.is_visible}
-			className="regular-text"
-			max={field.max}
-			min={field.min}
-			step={field.step}
-			onChange={handleChange} />
+			richEditing={field.rich_editing}
+			mediaButtons={field.media_buttons}
+			content={field.value}
+			isDragging={field.ui.dragged}
+			onChange={handleChange}>
+			<textarea
+				id={field.id}
+				className="wp-editor-area"
+				name={name}
+				value={field.value}
+				rows={field.rows}
+				onChange={handleChange}
+				disabled={!field.ui.is_visible}
+				{...field.attributes} />
+		</RichTextEditorNoMedia>
 	</Field>;
 }
 
@@ -46,14 +54,15 @@ export const YOURFIELDNAMEField = ({
  *
  * @type {Object}
  */
-YOURFIELDNAMEField.propTypes = {
+RichTextNoMediaField.propTypes = {
 	name: PropTypes.string,
 	field: PropTypes.shape({
 		id: PropTypes.string,
 		value: PropTypes.string,
-		min: PropTypes.number,
-		max: PropTypes.number,
-		step: PropTypes.number,
+		rows: PropTypes.number,
+		attributes: PropTypes.object,
+		rich_editing: PropTypes.bool,
+		media_buttons: PropTypes.string,
 	}),
 	handleChange: PropTypes.func,
 };
@@ -72,17 +81,29 @@ export const enhance = compose(
 	/**
 	 * Attach the setup hooks.
 	 */
-	withSetup(),
+    withSetup({}, {
+        dragged: false
+    }),
 
 	/**
 	 * The handlers passed to the component.
 	 */
 	withHandlers({
-		handleChange: ({ field, setFieldValue }) => ({ target: { value } }) => setFieldValue(field.id, value),
+		handleChange: ({ field, setFieldValue }) => eventOrValue => {
+			let value;
+
+			if (isString(eventOrValue)) {
+				value = eventOrValue;
+			} else {
+				value = eventOrValue.target.value;
+			}
+
+			setFieldValue(field.id, value);
+		},
 	})
 );
 
 export default setStatic('type', [
-	'yourfieldname',
-])(enhance(YOURFIELDNAMEField));
+	'rich_text_no_media',
+])(enhance(RichTextNoMediaField));
 

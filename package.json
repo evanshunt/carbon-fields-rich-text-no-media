@@ -1,5 +1,5 @@
 {
-  "name": "carbon-field-YOURFIELDNAME",
+  "name": "carbon-field-rich-text-no-media",
   "version": "1.0.0",
   "scripts": {
     "dev": "webpack -w",
@@ -12,6 +12,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
+    "observe-resize": "^1.1.3",
     "webpack": "2.2.*"
   },
   "dependencies": {

@@ -1,11 +1,16 @@
 {
-    "name": "htmlburger/carbon-field-YOURFIELDNAME",
+    "name": "evanshunt/carbon-field-rich-text-no-media",
     "description": "Carbon Fields extension, that adds a YOURFIELDNAME field type.",
     "keywords": ["wordpress", "carbon-field", "carbon-field-YOURFIELDNAME"],
     "homepage": "",
     "type": "library",
     "license": "GPL-2.0+",
-    "authors": [],
+    "authors": [
+        {
+            "name": "David Toews",
+            "homepage": "https://github.com/davejtoews"
+        }
+    ],
     "require": {
         "htmlburger/carbon-fields": "^2.0"
     },
@@ -14,7 +19,7 @@
             "field.php"
         ],
         "psr-4": {
-            "Carbon_Field_YOURFIELDNAME\\": "core/"
+            "Carbon_Field_Rich_Text_No_Media\\": "core/"
         }
     }
 }
