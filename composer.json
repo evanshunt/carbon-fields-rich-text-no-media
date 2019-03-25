@@ -2,8 +2,9 @@
     "name": "evanshunt/carbon-fields-rich-text-no-media",
     "description": "Carbon Fields extension, that adds a Rich Text field type with no media.",
     "keywords": ["wordpress", "carbon-field", "carbon-fields-rich-text-no-media"],
-    "homepage": "",
+    "homepage": "https://github.com/evanshunt/carbon-fields-rich-text-no-media",
     "type": "library",
+    "version": "1.0.0",
     "license": "GPL-2.0+",
     "authors": [
         {
@@ -12,7 +13,7 @@
         }
     ],
     "require": {
-        "htmlburger/carbon-fields": "^2.0"
+        "htmlburger/carbon-fields": "^3.0.2"
     },
     "autoload": {
         "files": [
