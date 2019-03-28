@@ -1,0 +1,10 @@
+.cf-rich-text-no-media {
+  .mce-edit-area,
+  .regular-text {
+    min-height: 10em;
+  }
+
+  input[value="img"] {
+    display: none;
+  }
+}
