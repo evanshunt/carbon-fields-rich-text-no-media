@@ -62,13 +62,10 @@ class Rich_Text_No_Media_Field extends Textarea_Field
             $settings = array(
                 'tinymce' => array(
                     'resize' => true,
-                    'wp_autoresize_on' => true,
+                    'wp_autoresize_on' => false,
                 )
             );
-
-            add_filter('user_can_richedit', '__return_true');
             wp_editor('', 'carbon_settings', $settings);
-            remove_filter('user_can_richedit', '__return_true');
             ?>
         </div>
         <?php
