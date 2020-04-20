@@ -17,7 +17,7 @@ class RichTextNoMediaField extends Component {
 
         this.node = null;
         this.editor = null;
-        this.cancelResizeObserver = null;
+        // this.cancelResizeObserver = null;
     }
 
 	/**
@@ -132,11 +132,11 @@ class RichTextNoMediaField extends Component {
             const editorSetup = (editor) => {
                 this.editor = editor;
 
-                editor.on('blur Change', () => {
+                /*editor.on('blur Change', () => {
                     editor.save();
 
                     this.handleChange(editor.getContent());
-                });
+                });*/
             };
             const editorOptions = {
                 ...window.tinyMCEPreInit.mceInit.carbon_settings,

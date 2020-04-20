@@ -62,8 +62,8 @@ class Rich_Text_No_Media_Field extends Textarea_Field
             $settings = array(
                 'tinymce' => array(
                     'resize' => true,
-                    'autoresize_min_height' => 100,
-                    'wp_autoresize_on' => true,
+                    'autoresize_min_height' => 0,
+                    'wp_autoresize_on' => false,
                     'plugins' => 'wpautoresize'
                 )
             );
