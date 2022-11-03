@@ -4,7 +4,6 @@
     "keywords": ["wordpress", "carbon-field", "carbon-fields-rich-text-no-media"],
     "homepage": "https://github.com/evanshunt/carbon-fields-rich-text-no-media",
     "type": "library",
-    "version": "1.0.4",
     "license": "GPL-2.0+",
     "authors": [
         {
