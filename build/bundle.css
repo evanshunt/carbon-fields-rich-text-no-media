@@ -1,1 +1,3 @@
-.cf-rich-text-no-media input[value=img]{display:none}
+.cf-rich-text-no-media input[value=img] {
+  display: none;
+}
