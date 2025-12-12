@@ -3,7 +3,7 @@
  */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
 
@@ -76,24 +76,26 @@ module.exports = {
 
         new ProvidePlugin({
             'wp.element': '@wordpress/element'
-        }),
-
-        ...(
-            isProduction
-                ? [
-                    new OptimizeCssAssetsPlugin({
-                        cssProcessorPluginOptions: {
-                            preset: ['default', { discardComments: { removeAll: true } }]
-                        }
-                    }),
-                    new TerserPlugin({
-                        cache: true,
-                        parallel: true
-                    })
-                ]
-                : []
-        )
+        })
     ],
+    optimization: {
+        minimizer: [
+            ...(isProduction ? [
+                new TerserPlugin({
+                    terserOptions: {
+                        compress: {
+                            drop_console: true,
+                        },
+                    },
+                }),
+                new CssMinimizerPlugin({
+                    minimizerOptions: {
+                        preset: ['default', { discardComments: { removeAll: true } }]
+                    }
+                })
+            ] : [])
+        ]
+    },
     stats: {
         modules: false,
         hash: false,
