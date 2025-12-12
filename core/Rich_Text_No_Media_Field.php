@@ -24,7 +24,7 @@ class Rich_Text_No_Media_Field extends Textarea_Field
         $locale = get_locale();
         $path = $dir . $locale . '.mo';
         load_textdomain('carbon-field-rich-text-no-media', $path);
-        add_action('in_admin_header', array(get_class(), 'editor_init'));
+        add_action('in_admin_header', array(static::class, 'editor_init'));
     }
 
     /**
